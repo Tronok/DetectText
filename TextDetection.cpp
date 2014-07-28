@@ -16,13 +16,11 @@
     You should have received a copy of the GNU General Public License
     along with DetectText.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <unordered_map>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/connected_components.hpp>
-#include <boost/unordered_map.hpp>
-#include <boost/graph/floyd_warshall_shortest.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/io.hpp>
+
 /*#include <graph/adjacency_list.hpp>
 #include <graph/graph_traits.hpp>
 #include <graph/connected_components.hpp>
@@ -33,9 +31,9 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
-#include <opencv/cxcore.h>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/core/core_c.h>
 #include <math.h>
 #include <time.h>
 #include <utility>
@@ -494,8 +492,8 @@ std::vector< std::vector<Point2d> >
 findLegallyConnectedComponents (IplImage * SWTImage,
                                 std::vector<Ray> & rays)
 {
-        boost::unordered_map<int, int> map;
-        boost::unordered_map<int, Point2d> revmap;
+        std::unordered_map<int, int> map;
+        std::unordered_map<int, Point2d> revmap;
 
         typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS> Graph;
         int num_vertices = 0;
@@ -571,8 +569,8 @@ std::vector< std::vector<Point2d> >
 findLegallyConnectedComponentsRAY (IplImage * SWTImage,
                                 std::vector<Ray> & rays)
 {
-        boost::unordered_map<int, int> map;
-        boost::unordered_map<int, Point2d> revmap;
+        std::unordered_map<int, int> map;
+        std::unordered_map<int, Point2d> revmap;
 
         typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS> Graph;
         int num_vertices = 0;
